@@ -1,3 +1,4 @@
+# vim: set syntax=sh
 ps aux | 
 awk 'NR > 1' | 
 head |
