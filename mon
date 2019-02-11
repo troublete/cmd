@@ -1,0 +1,10 @@
+ps aux | 
+awk 'NR > 1' | 
+head |
+sort -k 3 -nr |
+awk 'BEGIN { print ".TS"; print "tab(;) allbox;"; print "l l l l l ." ; print "CPU%;MEM%;PID;USER;CMD" }
+{ printf("%02.2f;%02.2f;%d;%s;%s\n", $3, $4, $2, $1, $NF) }
+END { print ".TE" }' |
+tbl |
+groff -T utf8 |
+less
